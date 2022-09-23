@@ -23,7 +23,7 @@ sub _() {
 # accepts: (package, type)
 # returns: void
 sub die_invalid {
-  Carp::carp(join ' ', 'No valid type handlers:', map {@$_ ? (@$_) : ('(None)')} [get_packages(@_)])
+  Carp::croak(join ' ', 'No valid type handlers:', map {@$_ ? (@$_) : ('(None)')} [get_packages(@_)])
 }
 
 # accepts: (codename or coderef)
@@ -233,7 +233,7 @@ sub retrieve {
 # accepts: (value, valid?, explanation)
 # returns: value or void
 sub run_reporter {
-  $_[1] ? $_[0] : Carp::carp($_[2])
+  $_[1] ? $_[0] : Carp::croak($_[2])
 }
 
 # accepts: (package, type, value)
